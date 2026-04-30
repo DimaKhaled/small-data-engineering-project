@@ -1,0 +1,3206 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/15/2026 5:18:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DENU38E"
+  DTS:CreatorName="DESKTOP-DENU38E\dell"
+  DTS:DTSID="{0E28BBFD-5899-4CF2-B951-3FFAED9A91E6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="80"
+  DTS:VersionGUID="{5A650B35-8856-414E-AE26-D4FD9CB3DEAE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-DENU38E\MMSQLSERVER.AirQualityDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1235CC6F-FE0B-4C57-AE99-CC41F513025B}"
+      DTS:ObjectName="DESKTOP-DENU38E\MMSQLSERVER.AirQualityDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-DENU38E\MMSQLSERVER;Initial Catalog=AirQualityDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{1235CC6F-FE0B-4C57-AE99-CC41F513025B}DESKTOP-DENU38E\MMSQLSERVER.AirQualityDB;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{27CA6116-D229-4A6C-BC69-930DAC8F9C9C}"
+      DTS:ObjectName="DIMALORIAN\SQLEXPRESS.data_warehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DIMALORIAN\SQLEXPRESS;User ID=;Initial Catalog=data_warehouse;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Package-{27CA6116-D229-4A6C-BC69-930DAC8F9C9C}DIMALORIAN\SQLEXPRESS.data_warehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A26AB76F-D10C-4E36-9AC7-03FE38366FC6}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x002C_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="E:\FCAI_3rd_Year\Second-term\DataWarehouse\Assignments\Assignment1\Assignment\Air_Quality.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="sensor_id"
+              DTS:DTSID="{C7719317-B244-49F3-82CA-C4B3738F36CD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="city"
+              DTS:DTSID="{69E5C7C6-343B-4165-9419-584082052823}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="measurement_time"
+              DTS:DTSID="{D41C889B-022E-43B3-9330-315A4B981516}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="pm_25"
+              DTS:DTSID="{E00F7CB9-4993-4750-9AFF-DABF97CF6CE6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="pm_10"
+              DTS:DTSID="{9385CB86-6CF5-41C4-9475-7966A83ECCB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="unit"
+              DTS:DTSID="{4ADA0275-E733-4ECF-8160-AF1B817A0A1E}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Air Quality"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A465EA33-5EDB-4916-9983-1D52F7A3BCE8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Air Quality"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Air Quality\Derived Column for API"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column for API"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input].Columns[timestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestamp"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input].Columns[pm10]"
+                      cachedDataType="r8"
+                      cachedName="pm10"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input].Columns[pm25]"
+                      cachedDataType="r8"
+                      cachedName="pm25"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="city"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input].Columns[sensorid]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sensorid"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[city]}) ? "Unknown" : #{Package\Air Quality\Script Component.Outputs[Output 0].Columns[city]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(city) ? "Unknown" : city</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[timestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[timestamp]"
+                      name="timestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)([ISNULL](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]}) || [TRIM](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]}) == "" ? "1900-01-01 00:00:00" : [REPLACE](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]},"T"," "))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)(ISNULL(timestamp) || TRIM(timestamp) == "" ? "1900-01-01 00:00:00" : REPLACE(timestamp,"T"," "))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm25]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm25]"
+                      name="pm25"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]}) ? (DT_R8)0 : (#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]} &lt;= 0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(pm25) ? (DT_R8)0 : (pm25 &lt;= 0 ? (DT_R8)0 : (DT_R8)pm25)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm10]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm10]"
+                      name="pm10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]}) ? (DT_R8)0 : (#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]} &lt;= 0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(pm10) ? (DT_R8)0 : (pm10 &lt;= 0 ? (DT_R8)0 : (DT_R8)pm10)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"API"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"API"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[sensor_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[sensor_id]"
+                      name="sensor_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_WSTR,50)([ISNULL](#{Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]}) || #{Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]} == "" ? "0" : #{Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_WSTR,50)(ISNULL(sensorid) || sensorid == "" ? "0" : sensorid)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\Derived Column for CSV"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column for CSV"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input].Columns[measurement_time]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="measurement_time"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input].Columns[pm_25]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="pm_25"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input].Columns[pm_10]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="pm_10"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input].Columns[sensor_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="sensor_id"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="city"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[timestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[timestamp]"
+                      name="timestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]}) || [TRIM](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]}) == "") ? (DT_WSTR,50)"1900-01-01 00:00:00" : (DT_WSTR,50)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(measurement_time) || TRIM(measurement_time) == "") ? (DT_WSTR,50)"1900-01-01 00:00:00" : (DT_WSTR,50)measurement_time</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm25]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm25]"
+                      name="pm25"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]}) ? (DT_R8)0 : ((DT_R8)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]} &lt;= (DT_R8)0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(pm_25) ? (DT_R8)0 : ((DT_R8)pm_25 &lt;= (DT_R8)0 ? (DT_R8)0 : (DT_R8)pm_25)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm10]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm10]"
+                      name="pm10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]}) ? (DT_R8)0 : ((DT_R8)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]} &lt;= (DT_R8)0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(pm_10) ? (DT_R8)0 : ((DT_R8)pm_10 &lt;= (DT_R8)0 ? (DT_R8)0 : (DT_R8)pm_10)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"CSV"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"CSV"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[sensor_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[sensor_id]"
+                      name="sensor_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]}) || [TRIM](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]}) == "") ? "UNKNOWN" : #{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(sensor_id) || TRIM(sensor_id) == "") ? "UNKNOWN" : sensor_id</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]}) || [TRIM](#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]}) == "") ? (DT_WSTR,100)"UNKNOWN" : (DT_WSTR,100)#{Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(city) || TRIM(city) == "") ? (DT_WSTR,100)"UNKNOWN" : (DT_WSTR,100)city</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\Derived Column for XML"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column for XML"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input].Columns[StationID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StationID"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input].Columns[Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Time"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[Time]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input].Columns[PM25]"
+                      cachedDataType="i2"
+                      cachedName="PM25"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]" />
+                    <inputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input].Columns[PM10]"
+                      cachedDataType="ui2"
+                      cachedName="PM10"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[sensor_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[sensor_id]"
+                      name="sensor_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]}) || [TRIM](#{Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]}) == "") ? (DT_WSTR,50)"UNKNOWN" : (DT_WSTR,50)#{Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(StationID) || TRIM(StationID) == "") ? (DT_WSTR,50)"UNKNOWN" : (DT_WSTR,50)StationID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\XML Source.Outputs[Record].Columns[City]}) || [TRIM](#{Package\Air Quality\XML Source.Outputs[Record].Columns[City]}) == "") ? (DT_WSTR,100)"UNKNOWN" : (DT_WSTR,100)#{Package\Air Quality\XML Source.Outputs[Record].Columns[City]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(City) || TRIM(City) == "") ? (DT_WSTR,100)"UNKNOWN" : (DT_WSTR,100)City</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[timestamp]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[timestamp]"
+                      name="timestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">([ISNULL](#{Package\Air Quality\XML Source.Outputs[Record].Columns[Time]})) ? (DT_WSTR,50)"1900-01-01 00:00:00" : (DT_WSTR,50)#{Package\Air Quality\XML Source.Outputs[Record].Columns[Time]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(ISNULL(Time)) ? (DT_WSTR,50)"1900-01-01 00:00:00" : (DT_WSTR,50)Time</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm25]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm25]"
+                      name="pm25"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]}) ? (DT_R8)0 : (#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]} &lt;= 0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(PM25) ? (DT_R8)0 : (PM25 &lt;= 0 ? (DT_R8)0 : (DT_R8)PM25)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm10]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm10]"
+                      name="pm10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]}) ? (DT_R8)0 : (#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]} &lt;= 0 ? (DT_R8)0 : (DT_R8)#{Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(PM10) ? (DT_R8)0 : (PM10 &lt;= 0 ? (DT_R8)0 : (DT_R8)PM10)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="3"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"XML"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"XML"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Air Quality\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[sensor_id]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[sensor_id]"
+                      name="sensor_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[measurement_time]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[measurement_time]"
+                      name="measurement_time"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm_25]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_25]"
+                      name="pm_25"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm_10]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[pm_10]"
+                      name="pm_10"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[unit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[unit]"
+                      length="50"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].Columns[unit]"
+                      name="unit"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[sensor_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="sensor_id" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[measurement_time]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="measurement_time" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm_25]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pm_25" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pm_10]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pm_10" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="unit" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[air_quality_Q1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Air Quality\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sensor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sensor_id"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sensor_id]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]" />
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[timestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestamp"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timestamp]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]" />
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pm25]"
+                      cachedDataType="r8"
+                      cachedName="pm25"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm25]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]" />
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pm10]"
+                      cachedDataType="r8"
+                      cachedName="pm10"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm10]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]" />
+                    <inputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="source"
+                      externalMetadataColumnId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[source]"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[sensor_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="sensor_id" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="255"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[timestamp]"
+                      dataType="wstr"
+                      length="50"
+                      name="timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm25]"
+                      dataType="r8"
+                      name="pm25" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pm10]"
+                      dataType="r8"
+                      name="pm10" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[source]"
+                      dataType="wstr"
+                      length="50"
+                      name="source" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\Script Component"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;14"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Script Component"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System;
+using System.Net;
+using System.Text;
+using System.Globalization;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    public override void CreateNewOutputRows()
+    {
+        try
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            string url = "https://69be08c917c3d7d977910f4e.mockapi.io/us_air_quality/air_monitoring";
+
+            WebClient wc = new WebClient();
+            wc.Encoding = Encoding.UTF8;
+
+            string json = wc.DownloadString(url);
+
+            string[] records = json.Split(new string[] { "{" }, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string r in records)
+            {
+                if (r.Contains("id"))
+                {
+                    Output0Buffer.AddRow();
+
+                    // ===== STRING FIELDS =====
+                    string id = Extract(r, "id");
+                    string city = Extract(r, "location");
+                    string timestamp = Extract(r, "timestamp");
+
+                    // sensor_id
+                    Output0Buffer.sensorid = string.IsNullOrWhiteSpace(id) ? "UNKNOWN" : id;
+
+                    // city
+                    Output0Buffer.city = string.IsNullOrWhiteSpace(city) ? "UNKNOWN" : city;
+
+                    // timestamp (remove T)
+                    if (string.IsNullOrWhiteSpace(timestamp))
+                        timestamp = "1900-01-01 00:00:00";
+                    else
+                        timestamp = timestamp.Replace("T", " ");
+
+                    Output0Buffer.timestamp = timestamp;
+
+                    // ===== NUMERIC FIELDS =====
+                    double pm25 = 0;
+                    double pm10 = 0;
+
+                    string p1 = Extract(r, "pm25").Trim();
+                    string p2 = Extract(r, "pm10").Trim();
+
+                    if (!double.TryParse(p1, NumberStyles.Any, CultureInfo.InvariantCulture, out pm25))
+                        pm25 = 0;
+
+                    if (!double.TryParse(p2, NumberStyles.Any, CultureInfo.InvariantCulture, out pm10))
+                        pm10 = 0;
+
+                    // handle negative OR zero
+                    if (pm25 <= 0) pm25 = 0;
+                    if (pm10 <= 0) pm10 = 0;
+
+                    Output0Buffer.pm25 = pm25;
+                    Output0Buffer.pm10 = pm10;
+
+                    // source
+                    Output0Buffer.source = "API";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            bool cancel = false;
+            ComponentMetaData.FireError(0, "API ERROR", ex.Message, "", 0, out cancel);
+        }
+    }
+
+    // ===== Helper function =====
+    private string Extract(string text, string key)
+    {
+        try
+        {
+            int i = text.IndexOf("\"" + key + "\"");
+            if (i == -1) return "";
+
+            i = text.IndexOf(":", i) + 1;
+
+            // skip spaces
+            while (i < text.Length && (text[i] == ' ')) i++;
+
+            // if string value
+            if (i < text.Length && text[i] == '"')
+            {
+                i++;
+                int j = text.IndexOf("\"", i);
+                return text.Substring(i, j - i).Trim();
+            }
+            else
+            {
+                int j = i;
+                while (j < text.Length && text[j] != ',' && text[j] != '}')
+                    j++;
+
+                return text.Substring(i, j - i).Trim();
+            }
+        }
+        catch
+        {
+            return "";
+        }
+    }
+}]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_d4943abd836544be92e84d6d54eac722.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807BAE93-72BE-40D2-BED1-D40B763353EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_d4943abd836544be92e84d6d54eac722</RootNamespace>
+    <AssemblyName>SC_d4943abd836544be92e84d6d54eac722</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_d4943abd836544be92e84d6d54eac722" IconIndex="0"></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC170</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Output0Buffer: ScriptBuffer
+
+{
+    public Output0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Double pm10
+    {
+        set
+        {
+            this[0] = value;
+        }
+    }
+    public bool pm10_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(0);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public Double pm25
+    {
+        set
+        {
+            this[1] = value;
+        }
+    }
+    public bool pm25_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(1);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String source
+    {
+        set
+        {
+            this[2] = value;
+        }
+    }
+    public bool source_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(2);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String city
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool city_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String sensorid
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool sensorid_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    public String timestamp
+    {
+        set
+        {
+            this[5] = value;
+        }
+    }
+    public bool timestamp_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(5);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public void AddRow()
+    {
+        base.AddRow();
+    }
+
+    new public void SetEndOfRowset()
+    {
+        base.SetEndOfRowset();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_d4943abd836544be92e84d6d54eac722.Properties.Settings.get_Default():SC_d4943abd836544be92e84d6d54eac722.Properties.Sett" +
+    "ings")]
+
+namespace SC_d4943abd836544be92e84d6d54eac722.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public Output0Buffer Output0Buffer;
+
+    public virtual void FinishOutputs()
+    {
+    }
+
+    private void MarkOutputsFinished()
+    {
+
+        if (null != Output0Buffer)
+        {
+            Output0Buffer.SetEndOfRowset();
+            Output0Buffer = null;
+        }
+
+    }
+
+    public override void PrimeOutput(int Outputs, int[] OutputIDs, PipelineBuffer[] Buffers, OutputNameMap OutputMap)
+    {
+       for(int Idx = 0; Idx < Outputs; Idx++)
+       {
+            if(OutputIDs[Idx] == GetOutputID(OutputMap, @"Output 0"))
+            {
+                Output0Buffer = new Output0Buffer(Buffers[Idx], GetColumnIndexes(OutputIDs[Idx]), OutputMap);
+            }
+        }
+
+        CreateNewOutputRows();
+
+        FinishOutputs();
+        MarkOutputsFinished();
+
+    }
+
+    public virtual void CreateNewOutputRows()
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_d4943abd836544be92e84d6d54eac722</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_d4943abd836544be92e84d6d54eac722</msb:DisplayName>
+    <msb:ProjectId>{7EA89FFE-8072-433D-B48E-7E3096C014B7}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_d4943abd836544be92e84d6d54eac722.csproj" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_d4943abd836544be92e84d6d54eac722")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_d4943abd836544be92e84d6d54eac722")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_d4943abd836544be92e84d6d54eac722.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_d4943abd836544be92e84d6d54eac722.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_d4943abd836544be92e84d6d54eac722.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_d4943abd836544be92e84d6d54eac722.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_d4943abd836544be92e84d6d54eac722.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_d4943abd836544be92e84d6d54eac722.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAKLN4GkAAAAAAAAAAOAAIiALATAAABwAAAAIAAAAAAAAGjsA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAMg6AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAIBsAAAAgAAAAHAAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAeAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAJAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAD8
+OgAAAAAAAEgAAAACAAUAcCUAAKAUAAABAAAAAAAAABA6AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBwAAAgAAAQAAESAADAAAKBAAAApyAQAAcApzEQAACiUo
+EgAACm8TAAAKBm8UAAAKF40fAAABJRZylgAAcKIXbxUAAAoLFgw4iwEAAAcImg0JcpoAAHBvFgAA
+CjlzAQAAAnsDAAAEbxEAAAYCCXKaAABwKAIAAAYTBAIJcqAAAHAoAgAABhMFAglysgAAcCgCAAAG
+EwYCewMAAAQRBCgXAAAKLQQRBCsFcsYAAHBvDQAABgJ7AwAABBEFKBcAAAotBBEFKwVyxgAAcG8L
+AAAGEQYoFwAACiwJctYAAHATBisTEQZy/gAAcHICAQBwbxgAAAoTBgJ7AwAABBEGbw8AAAYjAAAA
+AAAAAAATByMAAAAAAAAAABMIAglyBgEAcCgCAAAGbxkAAAoCCXIQAQBwKAIAAAZvGQAAChMJIP8B
+AAAoGgAAChIHKBsAAAotCyMAAAAAAAAAABMHEQkg/wEAACgaAAAKEggoGwAACi0LIwAAAAAAAAAA
+EwgRByMAAAAAAAAAADULIwAAAAAAAAAAEwcRCCMAAAAAAAAAADULIwAAAAAAAAAAEwgCewMAAAQR
+B28HAAAGAnsDAAAEEQhvBQAABgJ7AwAABHIaAQBwbwkAAAYIF1gMCAeOaT9s/v//3icTChYTCwIo
+HAAAChZyIgEAcBEKbx0AAApyNgEAcBYSC28eAAAK3gAqQRwAAAAAAAAAAAAA2AEAANgBAAAnAAAA
+DgAAARswBADKAAAAAgAAEQNyOAEAcARyOAEAcCgfAAAKbyAAAAoKBhUzC3I2AQBwC92iAAAAA3I8
+AQBwBm8hAAAKF1gKKwQGF1gKBgNvIgAACi8LAwZvIwAACh8gLugGA28iAAAKLy4DBm8jAAAKHyIz
+IwYXWAoDcjgBAHAGbyEAAAoMAwYIBllvJAAACm8ZAAAKC95CBg0rBAkXWA0JA28iAAAKLxYDCW8j
+AAAKHywuCwMJbyMAAAoffTPdAwYJBllvJAAACm8ZAAAKC94JJnI2AQBwC94AByoAAAEQAAAAAAAA
+v78ACQ8AAAEeAigUAAAGKioCAwQFKCUAAAoqOgIWA4whAAABKCYAAAoqWgMsCAIWKCcAAAoqckAB
+AHBzKAAACno6AhcDjCEAAAEoJgAACipaAywIAhcoJwAACipyQAEAcHMoAAAKeiYCGAMoJgAACipa
+AywIAhgoJwAACipyQAEAcHMoAAAKeiYCGQMoJgAACipaAywIAhkoJwAACipyQAEAcHMoAAAKeiYC
+GgMoJgAACipaAywIAhooJwAACipyQAEAcHMoAAAKeiYCGwMoJgAACipaAywIAhsoJwAACipyQAEA
+cHMoAAAKeh4CKCkAAAoqHgIoKgAACioeAigrAAAKKn4CKCwAAAoCAnMZAAAGfQEAAAQCAnMaAAAG
+fQIAAAQqBipuAnsDAAAELBICewMAAARvEgAABgIUfQMAAAQqAAAAEzAFAEkAAAADAAARFgorLgQG
+lA4Ect0BAHAoLQAACjMZAgUGmgIEBpQoLgAACg4EcwQAAAZ9AwAABAYXWAoGAzLOAm8YAAAGAm8V
+AAAGAigWAAAGKjoCKC8AAAoCA30EAAAEKjoCKC8AAAoCA30FAAAEKh4CKC8AAAoqrn4GAAAELR5y
+7wEAcNAHAAACKDAAAApvMQAACnMyAAAKgAYAAAR+BgAABCoafgcAAAQqHgKABwAABCoafggAAAQq
+HgIoMwAACioucyAAAAaACAAABCoAAABCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwA
+AAA0BwAAI34AAKAHAABkCAAAI1N0cmluZ3MAAAAABBAAAGQCAAAjVVMAaBIAABAAAAAjR1VJRAAA
+AHgSAAAoAgAAI0Jsb2IAAAAAAAAAAgAAAVcVogEJAQAAAPoBMwAWAAABAAAAKAAAAAgAAAAIAAAA
+IQAAABgAAAAzAAAAEAAAAAMAAAADAAAADwAAABAAAAABAAAABQAAAAEAAAAAANEDAQAAAAAABgCw
+AhgGBgBEAxgGBgD8AQUGDwCMBgAABgApAtcEBgCTAtcEBgB0AtcEBgArA9cEBgDQAtcEBgDpAtcE
+BgBAAtcEBgBbAn0DCgAEAxsBBgD5BIoEBgB6B4oECgCGBRsBDgB3BRsBCgAPBRsBCgDVBxsBBgDf
+AQUGBgCXBTgGBgADBcIEEgCvAbsDEgAQArsDEgCOAa0EBgDEARgGEgCnBYEHEgA8AYEHEgCtB4EH
+BgB0Ay8IBgCfA4oEBgAkB4oEBgDwAIoEBgDUBsIEBgBZBYoEFgABALsFBgDpBIoEBgBMAYoEBgD3
+AIoEBgBPCNcEAAAAAFkAAAAAAAEAAQABABAAogQAABAAAQABAAEAEABpBQAAQQABAAQAAQAQALcH
+AABNAAEAFAABABAAGAcAAD0ABAAZAAEAEADKBgAAPQAFABoAAAAQAD8GmwY9AAYAGwAAARAABgeb
+BmUACAAfAAYAGAf5AAYAygb9AAYAaQUBAQEAxQcFAQEAxQcFAREAlgQJAREAaQENAREAyQARAVAg
+AAAAAMYAVwcGAAEAeCIAAAAAgQByB1YAAQBgIwAAAACGGO4FBgADAGgjAAAAAIYY7gWrAAMAcyMA
+AAAAhggaABUBBgCCIwAAAACGCPkDGgEHAJkjAAAAAIYIRwAVAQgAqCMAAAAAhggJBBoBCQC/IwAA
+AACGCNkAEAAKAMkjAAAAAIYILQQaAQsA4CMAAAAAhghYCBAADADqIwAAAACGCFQEGgENAAEkAAAA
+AIYIoQAQAA4ACyQAAAAAhggZBBoBDwAiJAAAAACGCEsFEAAQACwkAAAAAIYIPwQaAREAQyQAAAAA
+hgBACAYAEgBLJAAAAACGAIwHBgASAFMkAAAAAIYAjwe7ABIAWyQAAAAAhhjuBQYAEgB7JAAAAADG
+AUkHBgASAH0kAAAAAIEAjQAGABIAnCQAAAAAxgAjCB8BEgB7JAAAAADGAVcHBgAWAPEkAAAAAIYY
+7gUrARYAACUAAAAAhhjuBSsBFwAPJQAAAACDGO4FBgAYABclAAAAAJMIkwUxARgAQyUAAAAAkwhR
+AWAAGABKJQAAAACTCF0BNgEYAFIlAAAAAJYIoQc8ARkAWSUAAAAAhhjuBQYAGQBhJQAAAACRGPQF
+QQEZAAAAAQA7CAAAAgBHCAAAAQCMBQAAAgDhBgAAAwAdBQAAAQBiAwAAAQBiAwAAAQBiAwAAAQBi
+AwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBiAwAAAQBPBwAA
+AgD7BQAAAwBBBwAABAAdBQAAAQDbBwAAAQDbBwAAAQBiAwkA7gUBABEA7gUGABkA7gUKACkA7gUQ
+ADEA7gUQADkA7gUQAEEA7gUQAEkA7gUQAFEA7gUQAFkA7gUQAGEA7gUQAGkA7gUGAKEA7gUGAMEA
+7gUVANEA7gUGANkAbAQsAOkA7gUGAPEAUAAyAOkAcAM3AOkAlwM9APkAmwdCAPkADwdMAPkAtgBR
+APkArgBWAPkAkQRcALEAeQFgAAkBpgFlAJkAbgByAHEA5ABcACEB5AV4APkAaweKAPkAaAORAPkA
+aAOWAPkAsAOcAPkANwegAPkApgOlAIEA7gWrAIEAgQS1AIEAZAQBACkB7gUQAIEAQAgGAIEAjAcG
+AIEAjwe7AJkA7gUGAJkAYgDDAJkA9QbKAHkA7gUGADEBCQHQADEBSwjZAKkA7gXfAMkA7gUGAC4A
+CwBgAS4AEwBpAS4AGwCIAS4AIwCRAS4AKwC6AS4AMwC6AS4AOwC6AS4AQwCRAS4ASwDAAS4AUwC6
+AS4AWwDXAUMAYwAhAuMAawAhAgEBewAhAqkBcwCIAckBcwCIARsAgwC/AAMAAQAHAA0ACAAPAAAA
+HgBFAQAA/QNJAQAASwBFAQAADQRJAQAA3QBNAQAAMQRJAQAAXAhNAQAAWARJAQAApQBNAQAAHQRJ
+AQAATwVNAQAAQwRJAQAAlwVRAQAAhgFWAQAApQdbAQEABQADAAEABgAFAAEABwAHAAEACAAJAAEA
+CQALAAEACgANAAEACwAPAAEADAARAAEADQATAAEADgAVAAEADwAXAAEAEAAZAAIAHAAbAAIAHQAd
+AAEAHgAdAAIAHwAfAASAAAABAAAAAAAAAAAAAAAAACMAAAAEAAAAAAAAAAAAAADnAIQAAAAAABEA
+AAAAAAAAAAAAAPAA5QcAAAAAEQAAAAAAAAAAAAAA8AACCAAAAAAEAAAAAAAAAAAAAADnAIoEAAAA
+ABEAAAAAAAAAAAAAAPAAJwUAAAAAAAAAAAEAAABJBgAAAAAAAABJRFRTQ29tcG9uZW50TWV0YURh
+dGExMDAAc2V0X3BtMTAAU0NfZDQ5NDNhYmQ4MzY1NDRiZTkyZTg0ZDZkNTRlYWM3MjIAc2V0X3Bt
+MjUAZ2V0X1VURjgAPE1vZHVsZT4AR2V0T3V0cHV0SUQAZ2V0X0NvbXBvbmVudE1ldGFEYXRhAG1z
+Y29ybGliAE1hcmtPdXRwdXRzRmluaXNoZWQAc2V0X3NlbnNvcmlkAFJlcGxhY2UASXNOdWxsT3JX
+aGl0ZVNwYWNlAGRlZmF1bHRJbnN0YW5jZQBzZXRfc291cmNlAGdldF9NZXNzYWdlAERvdWJsZQBS
+dW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0
+cy5QaXBlbGluZQBTZWN1cml0eVByb3RvY29sVHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBy
+ZXNvdXJjZUN1bHR1cmUAZ2V0X0ludmFyaWFudEN1bHR1cmUAQXBwbGljYXRpb25TZXR0aW5nc0Jh
+c2UAVHJ5UGFyc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1
+dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRv
+ckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVt
+YXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRp
+b25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4
+YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdo
+dEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJs
+eUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAdmFsdWUASW5k
+ZXhPZgBzZXRfRW5jb2RpbmcAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBEb3dubG9hZFN0cmlu
+ZwBTdWJzdHJpbmcAZ2V0X0xlbmd0aABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfZDQ5NDNhYmQ4
+MzY1NDRiZTkyZTg0ZDZkNTRlYWM3MjIuZGxsAHNldF9wbTEwX0lzTnVsbABzZXRfcG0yNV9Jc051
+bGwAc2V0X3NlbnNvcmlkX0lzTnVsbABzZXRfc291cmNlX0lzTnVsbABzZXRfdGltZXN0YW1wX0lz
+TnVsbABzZXRfY2l0eV9Jc051bGwAU2V0TnVsbABzZXRfU2VjdXJpdHlQcm90b2NvbABzZXRfSXRl
+bQBTeXN0ZW0AVHJpbQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5c3RlbS5Db25maWd1cmF0aW9u
+AFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25F
+eGNlcHRpb24AQ3VsdHVyZUluZm8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAATWljcm9zb2Z0LlNx
+bFNlcnZlci5EVFNQaXBlbGluZVdyYXAAc2V0X3RpbWVzdGFtcABJRm9ybWF0UHJvdmlkZXIAT3V0
+cHV0MEJ1ZmZlcgBQaXBlbGluZUJ1ZmZlcgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdl
+cgBTZXJ2aWNlUG9pbnRNYW5hZ2VyAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lLldy
+YXBwZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBPdXRwdXRJRHMAU3lzdGVtLkRpYWdub3N0aWNz
+AFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTQ19kNDk0
+M2FiZDgzNjU0NGJlOTJlODRkNmQ1NGVhYzcyMi5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJj
+ZXMARGVidWdnaW5nTW9kZXMAU0NfZDQ5NDNhYmQ4MzY1NDRiZTkyZTg0ZDZkNTRlYWM3MjIuUHJv
+cGVydGllcwBWYXJpYWJsZXMATnVtYmVyU3R5bGVzAEJ1ZmZlckNvbHVtbkluZGV4ZXMAR2V0Q29s
+dW1uSW5kZXhlcwBTZXR0aW5ncwBDb250YWlucwBDb25uZWN0aW9ucwBTdHJpbmdTcGxpdE9wdGlv
+bnMAZ2V0X0NoYXJzAEJ1ZmZlcnMARmluaXNoT3V0cHV0cwBDcmVhdGVOZXdPdXRwdXRSb3dzAENv
+bmNhdABFeHRyYWN0AE9iamVjdABTeXN0ZW0uTmV0AFNldEVuZE9mUm93c2V0AFNwbGl0AGdldF9E
+ZWZhdWx0AFdlYkNsaWVudABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21w
+b25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLlBp
+cGVsaW5lSG9zdABQcmltZU91dHB1dABTeXN0ZW0uVGV4dAB0ZXh0AEFkZFJvdwBrZXkAZ2V0X0Fz
+c2VtYmx5AHNldF9jaXR5AAAAAACAk2gAdAB0AHAAcwA6AC8ALwA2ADkAYgBlADAAOABjADkAMQA3
+AGMAMwBkADcAZAA5ADcANwA5ADEAMABmADQAZQAuAG0AbwBjAGsAYQBwAGkALgBpAG8ALwB1AHMA
+XwBhAGkAcgBfAHEAdQBhAGwAaQB0AHkALwBhAGkAcgBfAG0AbwBuAGkAdABvAHIAaQBuAGcAAAN7
+AAAFaQBkAAARbABvAGMAYQB0AGkAbwBuAAATdABpAG0AZQBzAHQAYQBtAHAAAA9VAE4ASwBOAE8A
+VwBOAAAnMQA5ADAAMAAtADAAMQAtADAAMQAgADAAMAA6ADAAMAA6ADAAMAABA1QAAAMgAAAJcABt
+ADIANQAACXAAbQAxADAAAAdBAFAASQAAE0EAUABJACAARQBSAFIATwBSAAABAAMiAAADOgAAgJtJ
+AHMATgB1AGwAbAAgAHAAcgBvAHAAZQByAHQAeQAgAGMAYQBuAG4AbwB0ACAAYgBlACAAcwBlAHQA
+IAB0AG8AIABGAGEAbABzAGUALgAgAEEAcwBzAGkAZwBuACAAYQAgAHYAYQBsAHUAZQAgAHQAbwAg
+AHQAaABlACAAYwBvAGwAdQBtAG4AIABpAG4AcwB0AGUAYQBkAC4AABFPAHUAdABwAHUAdAAgADAA
+AHFTAEMAXwBkADQAOQA0ADMAYQBiAGQAOAAzADYANQA0ADQAYgBlADkAMgBlADgANABkADYAZAA1
+ADQAZQBhAGMANwAyADIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1AHIAYwBlAHMA
+AAAAAFPsfnd7xvxHqTCdkI/47WUABCABAQgDIAABBSABARERBCABAQ4FIAEBEV0QBwwOHQ4IDg4O
+Dg0NDhI5AgUAAQERcQQAABJ5BSABARJ5BCABDg4JIAIdDh0OEYCBBCABAg4EAAECDgUgAg4ODgMg
+AA4EAAASWQwABAIOEYCJEoCNEA0FIAASgJEKIAYBCA4ODggQAgYHBAgOCAgGAAMODg4OBCABCA4F
+IAIIDggDIAAIBCABAwgFIAIOCAgJIAMBEkUdCBJJBSACAQgcAyAAAgMHAQgGAAIIEkkOBSABHQgI
+CAABEoCZEYCdBSAAEoChByACAQ4SgKEIt3pcVhk04IkIiYRdzYCAzJEDBhIUAwYSGAMGEgwDBhJN
+AwYSVQMGElkDBhIgBCABAQ0EIAEBAgsgBAEIHQgdEkUSSQUgAQESTQQAABJVBQABARJZBAAAEiAD
+AAABAygADQMoAAIDKAAOBAgAElUECAASWQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhj
+ZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ19kNDk0M2FiZDgzNjU0NGJlOTJlODRkNmQ1NGVh
+YzcyMgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDI2AABJAQAaLk5FVEZyYW1ld29yayxWZXJz
+aW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAA
+AAC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29y
+bGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3
+YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAA
+AAAAAFBBRFBBRFC0AAAA8DoAAAAAAAAAAAAACjsAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPw6
+AAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB
+ABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABIAAAA
+WEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAAAAC9
+BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAAAAEA
+VgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4AAAAA
+AAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAwADAA
+NABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4AeQBO
+AGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAAAFMA
+QwBfAGQANAA5ADQAMwBhAGIAZAA4ADMANgA1ADQANABiAGUAOQAyAGUAOAA0AGQANgBkADUANABl
+AGEAYwA3ADIAMgAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAwAC4A
+MAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AZAA0ADkANAAzAGEAYgBk
+ADgAMwA2ADUANAA0AGIAZQA5ADIAZQA4ADQAZAA2AGQANQA0AGUAYQBjADcAMgAyAC4AZABsAGwA
+AABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAg
+AEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAA
+AAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBkADQAOQA0
+ADMAYQBiAGQAOAAzADYANQA0ADQAYgBlADkAMgBlADgANABkADYAZAA1ADQAZQBhAGMANwAyADIA
+LgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AZAA0ADkANAAz
+AGEAYgBkADgAMwA2ADUANAA0AGIAZQA5ADIAZQA4ADQAZAA2AGQANQA0AGUAYQBjADcAMgAyAAAA
+NAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgACAAB
+AEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAAAcOwAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_d4943abd836544be92e84d6d54eac722</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">0C</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Script Component.Outputs[Output 0]"
+                  hasSideEffects="true"
+                  name="Output 0">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]"
+                      dataType="r8"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm10]"
+                      name="pm10" />
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]"
+                      dataType="r8"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[pm25]"
+                      name="pm25" />
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[source]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[source]"
+                      name="source" />
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[city]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[sensorid]"
+                      name="sensorid" />
+                    <outputColumn
+                      refId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Air Quality\Script Component.Outputs[Output 0].Columns[timestamp]"
+                      name="timestamp" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Air Quality\Union All.Inputs[Union All Input 3]"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[timestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestamp"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[pm25]"
+                      cachedDataType="r8"
+                      cachedName="pm25"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm25]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[pm10]"
+                      cachedDataType="r8"
+                      cachedName="pm10"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[pm10]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="source"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[sensor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sensor_id"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[sensor_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 3].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="city"
+                      lineageId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output].Columns[city]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Air Quality\Union All.Inputs[Union All Input 4]"
+                  hasSideEffects="true"
+                  name="Union All Input 4">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="source"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[sensor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sensor_id"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[sensor_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[timestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestamp"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="city"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[city]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[pm25]"
+                      cachedDataType="r8"
+                      cachedName="pm25"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm25]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 4].Columns[pm10]"
+                      cachedDataType="r8"
+                      cachedName="pm10"
+                      lineageId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output].Columns[pm10]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Air Quality\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[StationID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="StationID"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[StationID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[Time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Time"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[Time]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[Time]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[sensor_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="sensor_id"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[sensor_id]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[timestamp]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="timestamp"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[timestamp]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="3"
+                      cachedName="source"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[source]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="city"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[city]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="City"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[City]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[City]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[pm25]"
+                      cachedDataType="r8"
+                      cachedName="pm25"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm25]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[pm10]"
+                      cachedDataType="r8"
+                      cachedName="pm10"
+                      lineageId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output].Columns[pm10]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[PM10]"
+                      cachedDataType="ui2"
+                      cachedName="PM10"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM10]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Air Quality\Union All.Inputs[Union All Input 2].Columns[PM25]"
+                      cachedDataType="i2"
+                      cachedName="PM25"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM25]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Air Quality\Union All.Inputs[Union All Input 1]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[StationID]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[StationID]"
+                      name="StationID" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM25]"
+                      dataType="i2"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM25]"
+                      name="PM25" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM10]"
+                      dataType="ui2"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[PM10]"
+                      name="PM10" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[sensor_id]"
+                      name="sensor_id" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[timestamp]"
+                      name="timestamp" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]"
+                      dataType="r8"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm25]"
+                      name="pm25" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]"
+                      dataType="r8"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[pm10]"
+                      name="pm10" />
+                    <outputColumn
+                      refId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]"
+                      dataType="wstr"
+                      length="3"
+                      lineageId="Package\Air Quality\Union All.Outputs[Union All Output 1].Columns[source]"
+                      name="source" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Air Quality\XML Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element.;Microsoft Corporation;Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Extracts data from an XML file. For example, extract catalog data from an XML file that represents catalogs and catalog items. Before using, specify the schema and generate an output for each XML element."
+              name="XML Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.XmlSourceAdapter</property>
+                <property
+                  dataType="System.String"
+                  description="The XML data used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLData">E:\FCAI_3rd_Year\Second-term\DataWarehouse\Assignments\Assignment1\Assignment\Air_Quality.xml</property>
+                <property
+                  dataType="System.String"
+                  description="The variable used by the XML source adapter to specify XML data."
+                  name="XMLDataVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how the XML source adapter gets XML data."
+                  name="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The XML schema definition used by the XML source adapter."
+                  expressionType="Notify"
+                  name="XMLSchemaDefinition">E:\FCAI_3rd_Year\Second-term\DataWarehouse\Assignments\Assignment1\Assignment\Air_Quality.xsd</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Identifies whether or not to use inline schema."
+                  name="UseInlineSchema">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Defines how XML integer types are mapped."
+                  name="XMLIntegerMapping"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.XmlSourceAdapter+XMLIntegerMappingConverter">0</property>
+              </properties>
+              <outputs>
+                <output
+                  refId="Package\Air Quality\XML Source.Outputs[Record]"
+                  name="Record">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">Record</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[StationID]"
+                      length="255"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[StationID]"
+                      name="StationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[City]"
+                      length="255"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].Columns[Time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[Time]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[Time]"
+                      name="Time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[PM25]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM25]"
+                      name="PM25"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]"
+                      dataType="ui2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[PM10]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record].Columns[PM10]"
+                      name="PM10"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[StationID]"
+                      dataType="wstr"
+                      length="255"
+                      name="StationID">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="255"
+                      name="City">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.String</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[Time]"
+                      dataType="dbTimeStamp"
+                      name="Time">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.DateTime</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[PM25]"
+                      dataType="i2"
+                      name="PM25">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.Int16</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record].ExternalColumns[PM10]"
+                      dataType="ui2"
+                      name="PM10">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          name="CLRType">System.UInt16</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Air Quality\XML Source.Outputs[Record Error Output]"
+                  isErrorOut="true"
+                  name="Record Error Output">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Identifies the rowset associated with the output."
+                      name="RowsetID">Record</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[StationID]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[StationID]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[StationID]"
+                      name="StationID" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[City]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[City]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[Time]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[Time]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[Time]"
+                      name="Time" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[PM25]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[PM25]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[PM25]"
+                      name="PM25" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[PM10]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[PM10]"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[PM10]"
+                      name="PM10" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Air Quality\XML Source.Outputs[Record Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[StationID]"
+                      dataType="nText"
+                      name="StationID" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[City]"
+                      dataType="nText"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[Time]"
+                      dataType="nText"
+                      name="Time" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[PM25]"
+                      dataType="nText"
+                      name="PM25" />
+                    <externalMetadataColumn
+                      refId="Package\Air Quality\XML Source.Outputs[Record Error Output].ExternalColumns[PM10]"
+                      dataType="nText"
+                      name="PM10" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Air Quality.Paths[Derived Column Output]"
+              endId="Package\Air Quality\Union All.Inputs[Union All Input 3]"
+              name="Derived Column Output"
+              startId="Package\Air Quality\Derived Column for CSV.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Air Quality.Paths[Derived Column Output1]"
+              endId="Package\Air Quality\Union All.Inputs[Union All Input 4]"
+              name="Derived Column Output"
+              startId="Package\Air Quality\Derived Column for API.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Air Quality.Paths[Derived Column Output2]"
+              endId="Package\Air Quality\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Air Quality\Derived Column for XML.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Air Quality.Paths[Flat File Source Output]"
+              endId="Package\Air Quality\Derived Column for CSV.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Air Quality\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Air Quality.Paths[Output 0]"
+              endId="Package\Air Quality\Derived Column for API.Inputs[Derived Column Input]"
+              name="Output 0"
+              startId="Package\Air Quality\Script Component.Outputs[Output 0]" />
+            <path
+              refId="Package\Air Quality.Paths[Record]"
+              endId="Package\Air Quality\Derived Column for XML.Inputs[Derived Column Input]"
+              name="Record"
+              startId="Package\Air Quality\XML Source.Outputs[Record]" />
+            <path
+              refId="Package\Air Quality.Paths[Union All Output 1]"
+              endId="Package\Air Quality\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Air Quality\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Air Quality"
+          TopLeft="318.333315940368,143.866665666236" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Air Quality">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="161.6,41.6"
+          Id="Package\Air Quality\Script Component"
+          TopLeft="253.333319491811,38.9333332127995" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Air Quality\Derived Column for CSV"
+          TopLeft="450.71427899812,129.428569491421" />
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Air Quality\XML Source"
+          TopLeft="57.1428562913623,42.9999993507351" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Air Quality\Derived Column for XML"
+          TopLeft="26.4285714321193,136.466664652191" />
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Air Quality\Union All"
+          TopLeft="274.999984974663,221.999999457598" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Air Quality\Flat File Source"
+          TopLeft="472.14285010738,42.2857136470931" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Air Quality\OLE DB Destination"
+          TopLeft="252.499986204009,324.466666769121" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Air Quality\Derived Column for API"
+          TopLeft="247.142853460142,131.571426602347" />
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Derived Column Output]"
+          TopLeft="546.71427899812,171.028569491421">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-183.714294023457,50.971429966177"
+              Start="0,0"
+              End="-183.714294023457,43.471429966177">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2422369344633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.2422369344633"
+                    Point2="0,33.2422369344633"
+                    Point3="-4,33.2422369344633" />
+                  <mssgle:LineSegment
+                    End="-179.714294023457,33.2422369344633" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-179.714294023457,33.2422369344633"
+                    Point2="-183.714294023457,33.2422369344633"
+                    Point3="-183.714294023457,37.2422369344633" />
+                  <mssgle:LineSegment
+                    End="-183.714294023457,43.471429966177" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Union All Output 1]"
+          TopLeft="336.549985589336,263.599999457598">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.8666673115229"
+              Start="0,0"
+              End="0,53.3666673115229">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.3666673115229" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Record]"
+          TopLeft="123.585713861741,84.5999993507351">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.8666653014559"
+              Start="0,0"
+              End="0,44.3666653014559">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.3666653014559" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Output 0]"
+          TopLeft="337.438086475976,80.5333332127995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.0380933895475"
+              Start="0,0"
+              End="0,43.5380933895475">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5380933895475" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Flat File Source Output]"
+          TopLeft="547.22856455275,83.8857136470931">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.5428558443279"
+              Start="0,0"
+              End="0,38.0428558443279">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.0428558443279" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Derived Column Output1]"
+          TopLeft="337.871419217402,173.171426602347">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.828572855251"
+              Start="0,0"
+              End="0,41.328572855251">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.328572855251" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Air Quality.Paths[Derived Column Output2]"
+          TopLeft="122.428571432119,178.066664652191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184.571413542544,43.933334805407"
+              Start="0,0"
+              End="184.571413542544,36.433334805407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6521748730915" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.6521748730915"
+                    Point2="0,28.6521748730915"
+                    Point3="4,28.6521748730915" />
+                  <mssgle:LineSegment
+                    End="180.571413542544,28.6521748730915" />
+                  <mssgle:CubicBezierSegment
+                    Point1="180.571413542544,28.6521748730915"
+                    Point2="184.571413542544,28.6521748730915"
+                    Point3="184.571413542544,32.6521748730915" />
+                  <mssgle:LineSegment
+                    End="184.571413542544,36.433334805407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Air Quality\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

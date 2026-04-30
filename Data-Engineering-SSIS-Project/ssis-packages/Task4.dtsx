@@ -1,0 +1,2833 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/16/2026 6:21:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DIMALORIAN"
+  DTS:CreatorName="DIMALORIAN\dodak"
+  DTS:DTSID="{DA324321-3504-4410-8E51-42A94FD9DE85}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{A8DC7F5A-1BEF-492B-A9B2-2AF2A4F1AB35}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{ECF1D8AC-53F5-422C-850B-C4E5A62AFBAB}"
+      DTS:ObjectName="DIMALORIAN\SQLEXPRESS.data_warehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DIMALORIAN\SQLEXPRESS;User ID=;Initial Catalog=data_warehouse;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Package1-{ECF1D8AC-53F5-422C-850B-C4E5A62AFBAB}DIMALORIAN\SQLEXPRESS.data_warehouse;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{85BB881A-56FD-484A-A25F-D2D700E29021}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task - Clean the data from the source table then put in the staging table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column - Clean Data"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input].Columns[Action]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Action"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Action]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Quantity]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Action_Cleaned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Action_Cleaned]"
+                      name="Action_Cleaned"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Quantity]} &lt; 0 ? ([LOWER](#{Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Action]}) == "buy" ? "sell" : "buy") : [LOWER](#{Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Action]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Quantity &lt; 0 ? (LOWER(Action) == "buy" ? "sell" : "buy") : LOWER(Action)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Quantity_Cleaned]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Quantity_Cleaned]"
+                      name="Quantity_Cleaned"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](#{Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Quantity]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(Quantity)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination - Staging table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Staging_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].Columns[Trader_ID]"
+                      cachedDataType="i4"
+                      cachedName="Trader_ID"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Trader_ID]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trader_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].Columns[Trade_TS]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Trade_TS"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Trade_TS]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trade_TS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].Columns[Action_Cleaned]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Action_Cleaned"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Action_Cleaned]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Action_Cleaned]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].Columns[Quantity_Cleaned]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_Cleaned"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Quantity_Cleaned]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output].Columns[Quantity_Cleaned]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Trader_ID]"
+                      dataType="i4"
+                      name="Trader_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      name="Trade_TS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Action_Cleaned]"
+                      dataType="wstr"
+                      length="10"
+                      name="Action_Cleaned" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input].ExternalColumns[Quantity_Cleaned]"
+                      dataType="i4"
+                      name="Quantity_Cleaned" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades)"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source - Source table (Raw_Trades)"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Raw_Trades]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trader_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Trader_ID]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trader_ID]"
+                      name="Trader_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Trade_TS]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Trade_TS]"
+                      name="Trade_TS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Action]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Action]"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Action]"
+                      name="Action"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Trader_ID]"
+                      dataType="i4"
+                      name="Trader_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      name="Trade_TS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Action]"
+                      dataType="wstr"
+                      length="10"
+                      name="Action" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Trader_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Trader_ID]"
+                      name="Trader_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Trade_TS]"
+                      name="Trade_TS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Action]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Action]"
+                      name="Action" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task - Clean the data from the source table then put in the staging table.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades).Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task - Process the Data in the staging table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8C16D83F-A39A-4C9C-B99A-E497FA2EA9D9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task - Process the Data in the staging table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1].Columns[Trader_ID]"
+                      cachedDataType="i4"
+                      cachedName="Trader_ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trader_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1].Columns[Buy_Amount]"
+                      cachedDataType="i4"
+                      cachedName="Buy_Amount"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Buy_Amount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1].Columns[Sell_Amount]"
+                      cachedDataType="i4"
+                      cachedName="Sell_Amount"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Sell_Amount]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1].Columns[Trade_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Trade_Date"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Trade_Date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trader_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trader_ID]"
+                      name="Trader_ID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trader_ID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Buy]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Buy]"
+                      name="Total_Buy">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Buy_Amount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Sell]"
+                      dataType="i8"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Sell]"
+                      name="Total_Sell">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Sell_Amount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trade_Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trade_Date]"
+                      name="Trade_Date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Trade_Date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input].Columns[IsValid]"
+                      cachedDataType="bool"
+                      cachedName="IsValid"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0].Columns[IsValid]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Valid Rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Valid Rows"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0].Columns[IsValid]} ==  TRUE </property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">IsValid ==  TRUE </property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column - Split Buy and Sell"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input].Columns[Action_Cleaned]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Action_Cleaned"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input].Columns[Quantity_Cleaned]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_Cleaned"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input].Columns[Trade_TS]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Trade_TS"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trade_TS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Buy_Amount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Buy_Amount]"
+                      name="Buy_Amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]} == "buy" ? #{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]} : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Action_Cleaned == "buy" ? Quantity_Cleaned : 0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Sell_Amount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Sell_Amount]"
+                      name="Sell_Amount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]} == "sell" ? #{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]} : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Action_Cleaned == "sell" ? Quantity_Cleaned : 0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Trade_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output].Columns[Trade_Date]"
+                      name="Trade_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)#{Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trade_TS]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)Trade_TS</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Trader_Summary]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Trader_ID]"
+                      cachedDataType="i4"
+                      cachedName="Trader_ID"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trader_ID]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trader_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Trade_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Trade_Date"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trade_Date]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Trade_Date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total_Buy]"
+                      cachedDataType="i8"
+                      cachedName="Total_Buy"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Buy]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Buy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Total_Sell]"
+                      cachedDataType="i8"
+                      cachedName="Total_Sell"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Sell]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1].Columns[Total_Sell]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Att_Key]"
+                      dataType="i4"
+                      name="Att_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trader_ID]"
+                      dataType="i4"
+                      name="Trader_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Trade_Date]"
+                      dataType="dbDate"
+                      name="Trade_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Buy]"
+                      dataType="i4"
+                      name="Total_Buy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Total_Sell]"
+                      dataType="i4"
+                      name="Total_Sell" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source - Load data from the staging table"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Staging_Table]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  connectionManagerRefId="Package.ConnectionManagers[DIMALORIAN\SQLEXPRESS.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trader_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Trader_ID]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trader_ID]"
+                      name="Trader_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Trade_TS]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trade_TS]"
+                      name="Trade_TS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Action_Cleaned]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Action_Cleaned]"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Action_Cleaned]"
+                      name="Action_Cleaned"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Quantity_Cleaned]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Quantity_Cleaned]"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Quantity_Cleaned]"
+                      name="Quantity_Cleaned"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Trader_ID]"
+                      dataType="i4"
+                      name="Trader_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      name="Trade_TS" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Action_Cleaned]"
+                      dataType="wstr"
+                      length="10"
+                      name="Action_Cleaned" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].ExternalColumns[Quantity_Cleaned]"
+                      dataType="i4"
+                      name="Quantity_Cleaned" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Trader_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Trader_ID]"
+                      name="Trader_ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Trade_TS]"
+                      name="Trade_TS" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Action_Cleaned]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Action_Cleaned]"
+                      name="Action_Cleaned" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Quantity_Cleaned]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[Quantity_Cleaned]"
+                      name="Quantity_Cleaned" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;14"
+              description="Includes and runs custom script code. For example, apply a business rule that limits the range of valid values in an &quot;income&quot; column or add values in two columns and calculate the average of the sum."
+              name="Script Component - Validate Sell"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Stores the source code of the component"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Input 0", StringComparison.Ordinal))
+        {
+            Input0_ProcessInput(new Input0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Input0_ProcessInput(Input0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Input0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#region Help:  Introduction to the Script Component
+/* The Script Component allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services data flow.
+ *
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script component. */
+#endregion
+
+#region Namespaces
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+#endregion
+
+/// <summary>
+/// This is the class to which to add your code.  Do not change the name, attributes, or parent
+/// of this class.
+/// </summary>
+[Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute]
+public class ScriptMain : UserComponent
+{
+    #region Help:  Using Integration Services variables and parameters
+    /* To use a variable in this script, first ensure that the variable has been added to
+     * either the list contained in the ReadOnlyVariables property or the list contained in
+     * the ReadWriteVariables property of this script component, according to whether or not your
+     * code needs to write into the variable.  To do so, save this script, close this instance of
+     * Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties in the
+     * Script Transformation Editor window.
+     * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+     *
+     * Example of reading from a variable or parameter:
+     *  DateTime startTime = Variables.MyStartTime;
+     *
+     * Example of writing to a variable:
+     *  Variables.myStringVariable = "new value";
+     */
+    #endregion
+
+    #region Help:  Using Integration Services Connnection Managers
+    /* Some types of connection managers can be used in this script component.  See the help topic
+     * "Working with Connection Managers Programatically" for details.
+     *
+     * To use a connection manager in this script, first ensure that the connection manager has
+     * been added to either the list of connection managers on the Connection Managers page of the
+     * script component editor.  To add the connection manager, save this script, close this instance of
+     * Visual Studio, and add the Connection Manager to the list.
+     *
+     * If the component needs to hold a connection open while processing rows, override the
+     * AcquireConnections and ReleaseConnections methods.
+     * 
+     * Example of using an ADO.Net connection manager to acquire a SqlConnection:
+     *  object rawConnection = Connections.SalesDB.AcquireConnection(transaction);
+     *  SqlConnection salesDBConn = (SqlConnection)rawConnection;
+     *
+     * Example of using a File connection manager to acquire a file path:
+     *  object rawConnection = Connections.Prices_zip.AcquireConnection(transaction);
+     *  string filePath = (string)rawConnection;
+     *
+     * Example of releasing a connection manager:
+     *  Connections.SalesDB.ReleaseConnection(rawConnection);
+     */
+    #endregion
+
+    #region Help:  Firing Integration Services Events
+    /* This script component can fire events.
+     *
+     * Example of firing an error event:
+     *  ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, out cancel);
+     *
+     * Example of firing an information event:
+     *  ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain);
+     *
+     * Example of firing a warning event:
+     *  ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0);
+     */
+    #endregion
+
+    int maxBuyQty = 0;
+    int currentTrader = -1;
+    bool hasPreviousBuy = false;
+
+    /// <summary>
+    /// This method is called once, before rows begin to be processed in the data flow.
+    ///
+    /// You can remove this method if you don't need to do anything here.
+    /// </summary>
+    public override void PreExecute()
+    {
+        base.PreExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called after all the rows have passed through this component.
+    ///
+    /// You can delete this method if you don't need to do anything here.
+    /// </summary>
+    public override void PostExecute()
+    {
+        base.PostExecute();
+        /*
+         * Add your code here
+         */
+    }
+
+    /// <summary>
+    /// This method is called once for every row that passes through the component from Input0.
+    ///
+    /// Example of reading a value from a column in the the row:
+    ///  string zipCode = Row.ZipCode
+    ///
+    /// Example of writing a value to a column in the row:
+    ///  Row.ZipCode = zipCode
+    /// </summary>
+    /// <param name="Row">The row that is currently passing through the component</param>
+    public override void Input0_ProcessInputRow(Input0Buffer Row)
+    {
+        if (currentTrader != Row.TraderID)
+        {
+            currentTrader = Row.TraderID;
+            maxBuyQty = 0;
+            hasPreviousBuy = false;
+        }
+
+        //  assume invalid
+        Row.IsValid = false;
+
+        if (Row.ActionCleaned == "buy")
+        {
+            hasPreviousBuy = true;
+
+            if (Row.QuantityCleaned > maxBuyQty)
+                maxBuyQty = Row.QuantityCleaned;
+
+            Row.IsValid = true;
+        }
+        else if (Row.ActionCleaned == "sell")
+        {
+            if (hasPreviousBuy && maxBuyQty >= Row.QuantityCleaned)
+            {
+                Row.IsValid = true;
+            }
+        }
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Input0Buffer: ScriptBuffer
+
+{
+    public Input0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public Int32 TraderID
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[0]);
+        }
+    }
+    public bool TraderID_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public DateTime TradeTS
+    {
+        get
+        {
+            return Buffer.GetDateTime(BufferColumnIndexes[1]);
+        }
+    }
+    public bool TradeTS_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String ActionCleaned
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool ActionCleaned_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public Int32 QuantityCleaned
+    {
+        get
+        {
+            return Buffer.GetInt32(BufferColumnIndexes[3]);
+        }
+    }
+    public bool QuantityCleaned_IsNull
+    {
+        get
+        {
+            return IsNull(3);
+        }
+    }
+
+    public Boolean IsValid
+    {
+        set
+        {
+            this[4] = value;
+        }
+    }
+    public bool IsValid_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(4);
+            }
+            else
+            {
+                throw new InvalidOperationException("IsNull property cannot be set to False. Assign a value to the column instead.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_ba0ba041927a487a8d6aeec052414c02.Properties.Settings.get_Default():SC_ba0ba041927a487a8d6aeec052414c02.Properties.Sett" +
+    "ings")]
+
+namespace SC_ba0ba041927a487a8d6aeec052414c02.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_ba0ba041927a487a8d6aeec052414c02</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_ba0ba041927a487a8d6aeec052414c02</msb:DisplayName>
+    <msb:ProjectId>{F050259B-6644-4D8B-B6CF-F3D3FED15642}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_ba0ba041927a487a8d6aeec052414c02.csproj" />
+    <msb:File Include="main.cs" />
+    <msb:File Include="BufferWrapper.cs" />
+    <msb:File Include="ComponentWrapper.cs" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_ba0ba041927a487a8d6aeec052414c02.csproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{807BAE93-72BE-40D2-BED1-D40B763353EF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SC_ba0ba041927a487a8d6aeec052414c02</RootNamespace>
+    <AssemblyName>SC_ba0ba041927a487a8d6aeec052414c02</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.cs" />
+    <Compile Include="BufferWrapper.cs" />
+    <Compile Include="ComponentWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptComponent" IconIndex="0" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC170</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\AssemblyInfo.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("SC_ba0ba041927a487a8d6aeec052414c02")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("SC_ba0ba041927a487a8d6aeec052414c02")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.0.0")]
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Resources.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_ba0ba041927a487a8d6aeec052414c02.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_ba0ba041927a487a8d6aeec052414c02.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_ba0ba041927a487a8d6aeec052414c02.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace SC_ba0ba041927a487a8d6aeec052414c02.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_ba0ba041927a487a8d6aeec052414c02.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Stores the binary representation of the component"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_ba0ba041927a487a8d6aeec052414c02.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAFV44mkAAAAAAAAAAOAAIiALATAAABYAAAAIAAAAAAAAWjQA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAAg0AABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAYBQAAAAgAAAAFgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAYAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAA8
+NAAAAAAAAEgAAAACAAUApCIAAKwQAAABAAAAAAAAAFAzAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAIAmgAAAAAAAAACewIAAAQD
+bwYAAAYuGgIDbwYAAAZ9AgAABAIWfQEAAAQCFn0DAAAEAxZvDgAABgNvCgAABnIBAABwKBIAAAos
+KQIXfQMAAAQDbwwAAAYCewEAAAQxDAIDbwwAAAZ9AQAABAMXbw4AAAYqA28KAAAGcgkAAHAoEgAA
+CiwdAnsDAAAELBUCewEAAAQDbwwAAAYyBwMXbw4AAAYqOgIVfQIAAAQCKBIAAAYqKgIDBAUoEwAA
+CipSAnsUAAAKAnsVAAAKFpRvFgAACioiAhYoFwAACipSAnsUAAAKAnsVAAAKF5RvGAAACioiAhco
+FwAACipSAnsUAAAKAnsVAAAKGJRvGQAACioiAhgoFwAACipSAnsUAAAKAnsVAAAKGZRvFgAACioi
+AhkoFwAACio6AhoDjBwAAAEoGgAACipaAywIAhooGwAACipyEwAAcHMcAAAKeh4CKB0AAAoqHgIo
+HgAACip+AigfAAAKAgJzFgAABn0EAAAEAgJzFwAABn0FAAAEKpIEcrAAAHAabyAAAAosFQIFAgMo
+IQAACg4EcwUAAAZvFAAABipKKwcCA28VAAAGA28QAAAGLfEqBio6AigiAAAKAgN9BgAABCo6Aigi
+AAAKAgN9BwAABCoeAigiAAAKKq5+CAAABC0ecsAAAHDQBwAAAigjAAAKbyQAAApzJQAACoAIAAAE
+fggAAAQqGn4JAAAEKh4CgAkAAAQqGn4KAAAEKh4CKCYAAAoqLnMdAAAGgAoAAAQqQlNKQgEAAQAA
+AAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAAMAYAACN+AACcBgAAAAcAACNTdHJpbmdzAAAAAJwN
+AAA0AQAAI1VTANAOAAAQAAAAI0dVSUQAAADgDgAAzAEAACNCbG9iAAAAAAAAAAIAAAFXFaABCQEA
+AAD6ATMAFgAAAQAAACEAAAAIAAAACgAAAB4AAAAPAAAAJgAAABAAAAADAAAADQAAAA4AAAABAAAA
+BAAAAAEAAAAAAE0DAQAAAAAABgBEAhAFBgDYAhAFBgCQAf0EDwCEBQAABgC9AUQEBgAnAkQEBgAI
+AkQEBgC/AkQEBgBkAkQEBgB9AkQEBgDUAUQEBgDvARMDCgCYAt0ACgDPBN0ADgDABN0ACgCNBN0A
+BgDUAPQDCgBKBt0ABgANBvQDBgBzAf0EBgDgBDAFBgCBBC8EEgBDATcDEgCkATcDEgArARoEBgBY
+ARAFBgAwA/QDBgAHBPQDBgBWBPQDBgBwBPQDBgD+APQDBgCjAPQDBgDPBkQEAAAAAC4AAAAAAAEA
+AQABABAADwQAABAAAQABAAEAEACzBAAAOQAEAAUAAQAQACwGAABJAAQAEgABABAAAQYAAE0ABgAW
+AAEAEADCBQAATQAHABcAAAAQADcFkwVNAAgAGAAAARAA8QWTBWUACgAcAAEA2AaHAAEApQSHAAEA
+7gaKAAYAAQaNAAYAwgWRAAEAOgaVAAEAOgaVABEA+wOZABEAGwGdABEAkwChAFAgAAAAAMYA9gIG
+AAEAWCAAAAAAxgABAwYAAQBgIAAAAADGAKwGpQABAAYhAAAAAIYY8AQGAAIAFSEAAAAAhhjwBCEA
+AgAgIQAAAACGCDcAqwAFADUhAAAAAIYIdQNOAAUAPiEAAAAAhghMAK8ABQBTIQAAAACGCIkDTgAF
+AFwhAAAAAIYIYQC0AAUAcSEAAAAAhgicA04ABQB6IQAAAACGCHMAqwAFAI8hAAAAAIYItQNOAAUA
+mCEAAAAAhgiHALgABQCnIQAAAACGCNADuAAGAL4hAAAAAIYAwwZOAAcAxiEAAAAAhgAUBk4ABwDO
+IQAAAACGGPAEBgAHAO4hAAAAAMYAnwa9AAcAEyIAAAAAxgGYBqUACwAmIgAAAADGAawGpQAMACgi
+AAAAAIYY8ATHAA0ANyIAAAAAhhjwBMcADgBGIgAAAACDGPAEBgAPAE4iAAAAAJMI3ATNAA8AeiIA
+AAAAkwgDAdIADwCBIgAAAACTCA8B1wAPAIkiAAAAAJYIIAbdABAAkCIAAAAAhhjwBAYAEACYIgAA
+AACRGPYE4gAQAAAAAQDHBgAAAQDVBAAAAgDMBQAAAwCbBAAAAQANAwAAAQANAwAAAQBEAAAAAgDH
+AAAAAwDVBAAABACbBAAAAQDVBAAAAQDHBgAAAQBQBgAAAQBQBgAAAQANAwkA8AQBABEA8AQGABkA
+8AQKACkA8AQQADEA8AQQADkA8AQQAEEA8AQQAEkA8AQQAFEA8AQQAFkA8AQQAGEA8AQQAGkA8AQG
+AKEA8AQGAMEA8AQVANEA8AQGAJEA9gIGAJEAAQMGANkA4gYbAHEA8AQhAHEA1QQrAHEAzAUvAHkA
+JQAzAHEA3AM4AHkA0QA9AHkALQNDAHEA6wNIAHEA4wMBAOkA8AQQAHEAwwZOAHEAFAZOAJEA8AQG
+ANkA+gVSAJEA4AVZAJkA8AQGAPkAtQBfAPkAywZnAKkA8ARtAMkA8AQGAC4ACwAGAS4AEwAPAS4A
+GwAuAS4AIwA3AS4AKwBgAS4AMwBgAS4AOwBgAS4AQwA3AS4ASwBmAS4AUwBgAS4AWwB9AUMAYwDH
+AeMAawDHAUEBewDHAWkBcwAuAYkBcwAuAQMAAQAHAAsACAANAAAAOwDmAAAAeQPqAAAAUADuAAAA
+jQPqAAAAZQDzAAAAoAPqAAAAdwDmAAAAuQPqAAAAiwDqAAAA1APqAAAA4AT3AAAAIwH8AAAAJAYB
+AQIABgADAAIABwAFAAIACAAHAAIACQAJAAIACgALAAIACwANAAIADAAPAAIADQARAAEADgATAAEA
+DwAVAAIAGQAXAAIAGgAZAAEAGwAZAAIAHAAbAASAAAABAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAA
+AAAAAAB1AFgAAAAAABEAAAAAAAAAAAAAAH4AWgYAAAAAEQAAAAAAAAAAAAAAfgB3BgAAAAAEAAAA
+AAAAAAAAAAB1APQDAAAAAAAAAAABAAAAQQUAAAAAAFNDX2JhMGJhMDQxOTI3YTQ4N2E4ZDZhZWVj
+MDUyNDE0YzAyAEdldEludDMyADxNb2R1bGU+AGdldF9UcmFkZXJJRABJbnB1dElEAGdldF9UcmFk
+ZVRTAG1zY29ybGliAGdldF9BY3Rpb25DbGVhbmVkAGdldF9RdWFudGl0eUNsZWFuZWQAc2V0X0lz
+VmFsaWQAZGVmYXVsdEluc3RhbmNlAFJ1bnRpbWVUeXBlSGFuZGxlAEdldFR5cGVGcm9tSGFuZGxl
+AElucHV0TmFtZQBHZXREYXRlVGltZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBU
+eXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNl
+dHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0
+ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9y
+QnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1h
+cmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlv
+bkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhh
+dGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0
+QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5
+Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRl
+AFBvc3RFeGVjdXRlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAR2V0U3RyaW5nAFN5
+c3RlbS5Db21wb25lbnRNb2RlbABTQ19iYTBiYTA0MTkyN2E0ODdhOGQ2YWVlYzA1MjQxNGMwMi5k
+bGwAZ2V0X1RyYWRlcklEX0lzTnVsbABnZXRfVHJhZGVUU19Jc051bGwAZ2V0X0FjdGlvbkNsZWFu
+ZWRfSXNOdWxsAGdldF9RdWFudGl0eUNsZWFuZWRfSXNOdWxsAHNldF9Jc1ZhbGlkX0lzTnVsbABT
+ZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1hbgBCb29sZWFuAFNjcmlwdE1haW4AU3lz
+dGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24A
+SW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJpbmdDb21wYXJpc29uAEN1bHR1cmVJbmZvAE91
+dHB1dE5hbWVNYXAAT3V0cHV0TWFwAGN1cnJlbnRUcmFkZXIASW5wdXQwQnVmZmVyAFBpcGVsaW5l
+QnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0
+ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVz
+b3VyY2VzAFNDX2JhMGJhMDQxOTI3YTQ4N2E4ZDZhZWVjMDUyNDE0YzAyLlByb3BlcnRpZXMuUmVz
+b3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ19iYTBiYTA0MTkyN2E0ODdhOGQ2YWVl
+YzA1MjQxNGMwMi5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENv
+bHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9iamVjdABFbmRPZlJvd3Nl
+dABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21wb25l
+bnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVs
+aW5lSG9zdABJbnB1dDBfUHJvY2Vzc0lucHV0AElucHV0MF9Qcm9jZXNzSW5wdXRSb3cATmV4dFJv
+dwBnZXRfQXNzZW1ibHkAbWF4QnV5UXR5AG9wX0VxdWFsaXR5AGhhc1ByZXZpb3VzQnV5AAAAAAAH
+YgB1AHkAAAlzAGUAbABsAACAm0kAcwBOAHUAbABsACAAcAByAG8AcABlAHIAdAB5ACAAYwBhAG4A
+bgBvAHQAIABiAGUAIABzAGUAdAAgAHQAbwAgAEYAYQBsAHMAZQAuACAAQQBzAHMAaQBnAG4AIABh
+ACAAdgBhAGwAdQBlACAAdABvACAAdABoAGUAIABjAG8AbAB1AG0AbgAgAGkAbgBzAHQAZQBhAGQA
+LgAAD0kAbgBwAHUAdAAgADAAAHFTAEMAXwBiAGEAMABiAGEAMAA0ADEAOQAyADcAYQA0ADgANwBh
+ADgAZAA2AGEAZQBlAGMAMAA1ADIANAAxADQAYwAwADIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4A
+UgBlAHMAbwB1AHIAYwBlAHMAAAAALXfMVsQa+02xFkcYxR/u9wAEIAEBCAMgAAEFIAEBEREEIAEB
+DgUgAQERXQUAAgIODgkgAwESPR0IEkEDBhI9AwYdCAQgAQgIBCABAggFIAERRQgEIAEOCAUgAgEI
+HAMgAAIGIAICDhF5BSABHQgIBwABEn0RgIEFIAASgIUHIAIBDhKAhQi3elxWGTTgiQiJhF3NgIDM
+kQIGCAIGAgMGEhQDBhIYAwYSSQMGElUDBhJZAwYSIAUgAQESDAMgAAgEIAARRQMgAA4EIAEBAgkg
+BAEIDhI9EkEFIAEBEkkEAAASVQQAABJZBQABARJZBAAAEiADAAABAygACAMoAAIEKAARRQMoAA4E
+CAASVQQIABJZBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEA
+AgAAAAAAKAEAI1NDX2JhMGJhMDQxOTI3YTQ4N2E4ZDZhZWVjMDUyNDE0YzAyAAAFAQAAAAAWAQAR
+Q29weXJpZ2h0IEAgIDIwMjYAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJh
+bWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43BAEAAAC0AAAAzsrvvgEAAACRAAAA
+bFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4w
+LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0
+ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAMDQA
+AAAAAAAAAAAASjQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw0AAAAAAAAAAAAAAAAX0NvckRs
+bE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAAAABI
+AAAAWEAAAOwDAAAAAAAAAAAAAOwDNAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBPAAAA
+AAC9BO/+AAABAAAAAQAAAAAAAAABAAAAAAA/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAARAAA
+AAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBvAG4A
+AAAAAAAAsARMAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAAoAwAAAQAwADAAMAAw
+ADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAIgABAAEAQwBvAG0AcABhAG4A
+eQBOAGEAbQBlAAAAAAAAAAAAcAAkAAEARgBpAGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AAAAA
+AFMAQwBfAGIAYQAwAGIAYQAwADQAMQA5ADIANwBhADQAOAA3AGEAOABkADYAYQBlAGUAYwAwADUA
+MgA0ADEANABjADAAMgAAADAACAABAEYAaQBsAGUAVgBlAHIAcwBpAG8AbgAAAAAAMQAuADAALgAw
+AC4AMAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAAUwBDAF8AYgBhADAAYgBhADAA
+NAAxADkAMgA3AGEANAA4ADcAYQA4AGQANgBhAGUAZQBjADAANQAyADQAMQA0AGMAMAAyAC4AZABs
+AGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgA
+dAAgAEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAA
+AAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAEMAXwBiAGEA
+MABiAGEAMAA0ADEAOQAyADcAYQA0ADgANwBhADgAZAA2AGEAZQBlAGMAMAA1ADIANAAxADQAYwAw
+ADIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBDAF8AYgBhADAA
+YgBhADAANAAxADkAMgA3AGEANAA4ADcAYQA4AGQANgBhAGUAZQBjADAANQAyADQAMQA0AGMAMAAy
+AAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAADgA
+CAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAxAC4AMAAuADAALgAwAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAAAwAAABcNAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the Microsoft Visual Studio Tools for Applications project. Project names must be unique within a package."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_ba0ba041927a487a8d6aeec052414c02</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the programming language used by the script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">CSharp</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read-only variables."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a comma-separated list of read/write variables."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="List of breakpoints present on the script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Checksum to match component metedata against compiled codes."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">67</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0]"
+                  hasSideEffects="true"
+                  name="Input 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0].Columns[Trader_ID]"
+                      cachedDataType="i4"
+                      cachedName="Trader_ID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trader_ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0].Columns[Trade_TS]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Trade_TS"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trade_TS]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0].Columns[Action_Cleaned]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Action_Cleaned"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0].Columns[Quantity_Cleaned]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_Cleaned"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0]"
+                  name="Output 0"
+                  synchronousInputId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0].Columns[IsValid]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0].Columns[IsValid]"
+                      name="IsValid" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort Data"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input].Columns[Trader_ID]"
+                      cachedDataType="i4"
+                      cachedName="Trader_ID"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trader_ID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input].Columns[Trade_TS]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Trade_TS"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trade_TS]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input].Columns[Action_Cleaned]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Action_Cleaned"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Action_Cleaned]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input].Columns[Quantity_Cleaned]"
+                      cachedDataType="i4"
+                      cachedName="Quantity_Cleaned"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Quantity_Cleaned]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trader_ID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trader_ID]"
+                      name="Trader_ID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trader_ID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trade_TS]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Trade_TS]"
+                      name="Trade_TS"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Trade_TS]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Action_Cleaned]"
+                      name="Action_Cleaned"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Action_Cleaned]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output].Columns[Quantity_Cleaned]"
+                      name="Quantity_Cleaned"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output].Columns[Quantity_Cleaned]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[Aggregate Output 1]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\Aggregate.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[Output 0]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Inputs[Conditional Split Input]"
+              name="Output 0"
+              startId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Outputs[Output 0]" />
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[Sort Output]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell.Inputs[Input 0]"
+              name="Sort Output"
+              startId="Package\Data Flow Task - Process the Data in the staging table\Sort Data.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task - Process the Data in the staging table.Paths[Valid Rows]"
+              endId="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell.Inputs[Derived Column Input]"
+              name="Valid Rows"
+              startId="Package\Data Flow Task - Process the Data in the staging table\Conditional Split.Outputs[Valid Rows]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{3F02F5B8-F416-4098-ADAE-912046106D7D}"
+      DTS:From="Package\Data Flow Task - Clean the data from the source table then put in the staging table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Data Flow Task - Process the Data in the staging table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="456.8,41.6"
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table"
+          TopLeft="209.166655238305,55.4666662809584" />
+        <NodeLayout
+          Size="328.8,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table"
+          TopLeft="260.83331908203,213.199998517434" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="437.566655238305,97.0666662809584">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.3333361562749,116.133332236476"
+              Start="0,0"
+              End="-12.3333361562749,108.633332236476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.066666118238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54.066666118238"
+                    Point2="0,58.066666118238"
+                    Point3="-4,58.066666118238" />
+                  <mssgle:LineSegment
+                    End="-8.33333615627487,58.066666118238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.33333615627487,58.066666118238"
+                    Point2="-12.3333361562749,58.066666118238"
+                    Point3="-12.3333361562749,62.066666118238" />
+                  <mssgle:LineSegment
+                    End="-12.3333361562749,108.633332236476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task - Clean the data from the source table then put in the staging table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="288,41.6"
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades)"
+          TopLeft="295.833317169713,53.7333329596784" />
+        <NodeLayout
+          Size="240.8,41.6"
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table"
+          TopLeft="317.499982652566,222.733331784473" />
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table\Derived Column - Clean Data"
+          TopLeft="348.33331430124,135.199999059836" />
+        <EdgeLayout
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table.Paths[OLE DB Source Output]"
+          TopLeft="439.833317169713,95.3333329596784">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.2999971315267,39.8666661001577"
+              Start="0,0"
+              End="15.2999971315267,32.3666661001577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9333330500788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.9333330500788"
+                    Point2="0,19.9333330500788"
+                    Point3="4,19.9333330500788" />
+                  <mssgle:LineSegment
+                    End="11.2999971315267,19.9333330500788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.2999971315267,19.9333330500788"
+                    Point2="15.2999971315267,19.9333330500788"
+                    Point3="15.2999971315267,23.9333330500788" />
+                  <mssgle:LineSegment
+                    End="15.2999971315267,32.3666661001577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Clean the data from the source table then put in the staging table.Paths[Derived Column Output]"
+          TopLeft="455.13331430124,176.799999059836">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.2333316486746,45.9333327246371"
+              Start="0,0"
+              End="-17.2333316486746,38.4333327246371">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.9666663623185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.9666663623185"
+                    Point2="0,22.9666663623185"
+                    Point3="-4,22.9666663623185" />
+                  <mssgle:LineSegment
+                    End="-13.2333316486746,22.9666663623185" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.2333316486746,22.9666663623185"
+                    Point2="-17.2333316486746,22.9666663623185"
+                    Point3="-17.2333316486746,26.9666663623185" />
+                  <mssgle:LineSegment
+                    End="-17.2333316486746,38.4333327246371" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Source - Source table (Raw_Trades)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Clean the data from the source table then put in the staging table\OLE DB Destination - Staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Data Flow Task - Process the Data in the staging table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination"
+          TopLeft="365.303024859591,702.484841603222" />
+        <NodeLayout
+          Size="243.2,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\Derived Column - Split Buy and Sell"
+          TopLeft="328.03029814227,488.333326602976" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\Aggregate"
+          TopLeft="382.909085192464,587.636357079853" />
+        <NodeLayout
+          Size="122.4,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\Sort Data"
+          TopLeft="359.818176456474,144.560603906485" />
+        <NodeLayout
+          Size="309.6,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table"
+          TopLeft="279.833329163492,48.83333260566" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\Conditional Split"
+          TopLeft="350.530297806994,366.666661202907" />
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\Data Flow Task - Process the Data in the staging table\Script Component - Validate Sell"
+          TopLeft="318.484843739055,257.499996162951" />
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[Valid Rows]"
+          TopLeft="427.330297806994,408.266661202907">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.300000335276,80.0666654000684"
+              Start="0,0"
+              End="22.300000335276,72.5666654000684">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.0333327000342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.0333327000342"
+                    Point2="0,40.0333327000342"
+                    Point3="4,40.0333327000342" />
+                  <mssgle:LineSegment
+                    End="18.300000335276,40.0333327000342" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.300000335276,40.0333327000342"
+                    Point2="22.300000335276,40.0333327000342"
+                    Point3="22.300000335276,44.0333327000342" />
+                  <mssgle:LineSegment
+                    End="22.300000335276,72.5666654000684" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-13.765761551112,45.0333327000342,49.8315234375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[Sort Output]"
+          TopLeft="421.018176456474,186.160603906485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.8666672825811,71.3393922564657"
+              Start="0,0"
+              End="11.8666672825811,63.8393922564657">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.6696961282329" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.6696961282329"
+                    Point2="0,35.6696961282329"
+                    Point3="4,35.6696961282329" />
+                  <mssgle:LineSegment
+                    End="7.86666728258109,35.6696961282329" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.86666728258109,35.6696961282329"
+                    Point2="11.8666672825811,35.6696961282329"
+                    Point3="11.8666672825811,39.6696961282329" />
+                  <mssgle:LineSegment
+                    End="11.8666672825811,63.8393922564657" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[Output 0]"
+          TopLeft="430.107570773024,299.099996162951">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,67.5666650399568"
+              Start="0,0"
+              End="0,60.0666650399568">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.0666650399568" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[OLE DB Source Output]"
+          TopLeft="434.633329163492,90.43333260566">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.6151527070185,54.1272713008249"
+              Start="0,0"
+              End="-13.6151527070185,46.6272713008249">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0636356504125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.0636356504125"
+                    Point2="0,27.0636356504125"
+                    Point3="-4,27.0636356504125" />
+                  <mssgle:LineSegment
+                    End="-9.61515270701847,27.0636356504125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.61515270701847,27.0636356504125"
+                    Point2="-13.6151527070185,27.0636356504125"
+                    Point3="-13.6151527070185,31.0636356504125" />
+                  <mssgle:LineSegment
+                    End="-13.6151527070185,46.6272713008249" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[Derived Column Output]"
+          TopLeft="447.869691667367,529.933326602976">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.703030476877"
+              Start="0,0"
+              End="0,50.203030476877">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.203030476877" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Process the Data in the staging table.Paths[Aggregate Output 1]"
+          TopLeft="448.506055026028,629.236357079853">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,73.2484845233689"
+              Start="0,0"
+              End="0,65.7484845233689">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.7484845233689" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Process the Data in the staging table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task - Process the Data in the staging table\OLE DB Source - Load data from the staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
